@@ -21,6 +21,7 @@ set(scripts_STAT_SRCS
   ${AC_SCRIPTS_DIR}/World/npc_professions.cpp
   ${AC_SCRIPTS_DIR}/World/npc_taxi.cpp
   ${AC_SCRIPTS_DIR}/World/npcs_special.cpp
+  ${AC_SCRIPTS_DIR}/World/duel_reset.cpp
 )
 
 AC_ADD_SCRIPT_LOADER("World" "ScriptLoader.h")
