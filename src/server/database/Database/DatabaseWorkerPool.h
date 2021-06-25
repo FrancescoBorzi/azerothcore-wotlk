@@ -144,6 +144,11 @@ public:
     //! Statement must be prepared with CONNECTION_ASYNC flag.
     QueryCallback AsyncQuery(PreparedStatement<T>* stmt);
 
+    //! Enqueues a query in string format -with variable args- that will set the value of the QueryResultFuture return object as soon as the query is executed.
+    //! The return value is then processed in ProcessQueryCallback methods.
+    template<typename Format, typename... Args>
+    QueryCallback AsyncPQuery(Format&& sql, Args&& ... args);
+
     //! Enqueues a vector of SQL operations (can be both adhoc and prepared) that will set the value of the QueryResultHolderFuture
     //! return object as soon as the query is executed.
     //! The return value is then processed in ProcessQueryCallback methods.

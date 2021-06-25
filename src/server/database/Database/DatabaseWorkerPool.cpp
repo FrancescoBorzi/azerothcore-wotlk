@@ -216,6 +216,13 @@ QueryCallback DatabaseWorkerPool<T>::AsyncQuery(PreparedStatement<T>* stmt)
     return QueryCallback(std::move(result));
 }
 
+template<class T>
+template<typename Format, typename... Args>
+QueryCallback DatabaseWorkerPool<T>::AsyncPQuery(Format &&sql, Args &&... args)
+{
+    return AsyncQuery(Acore::StringFormat(std::forward<Format>(sql), std::forward<Args>(args)...).c_str());
+}
+
 template <class T>
 SQLQueryHolderCallback DatabaseWorkerPool<T>::DelayQueryHolder(std::shared_ptr<SQLQueryHolder<T>> holder)
 {
